@@ -15,6 +15,13 @@ def respuesta_valida(respuesta):
         return numero in [1, 2, 3]
     except ValueError:
         return False
+    
+def num_valido(respuesta):
+    try:
+        numero = float(respuesta)
+        return numero >= 0 and numero <= 5
+    except ValueError:
+        return False
 
 def insertar_pelicula(): #hay que leer archivo antes de añadir una pelicula para ver si existe
     global diccionario, ruta
