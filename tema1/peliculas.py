@@ -10,29 +10,38 @@ diccionario={}
 ruta = Path("pelicula_rating.json")
 
 def respuesta_valida(respuesta):
-    if int(respuesta) == 1 or int(respuesta) == 2 or int(respuesta) == 3:
-        return True
-    return False
+    try:
+        numero = int(respuesta)
+        return numero in [1, 2, 3]
+    except ValueError:
+        return False
 
 def insertar_pelicula(): #hay que leer archivo antes de añadir una pelicula para ver si existe
     global diccionario, ruta
-    titulo = "The heart killers"
-    clave = str(uuid.uuid1())
-    diccionario[clave] = {}
+    titulo = "the heart killers"
+    clave = str(uuid.uuid4())
     if ruta.exists():
         print("la ruta existte")
         with open (ruta, "r", encoding="utf-8") as f:
-            diccionario = json.loads(f.read())
-            for clave,valor in diccionario.items():
+            diccionario = json.load(f)
+            for c,valor in diccionario.items():
+                print(c, valor)
                 if titulo in valor.values():
                     print("El titulo ya existe")
-                    
-        diccionario[clave]["titulo"] = "The heart killers"
+                    os._exit(1)
+        diccionario[clave] = {}
+        diccionario[clave]["titulo"] = titulo
         diccionario[clave]["puntuacion"] = 4.5
         diccionario[clave]["cita"] = "Fadel, they are the snitches"
+        print(diccionario)
+        with open (ruta, "w", encoding="utf-8") as f:
+            f.write(json.dumps(diccionario))
+            print("Se ha añadido la película")
+        
     else: 
         with open (ruta, "w", encoding="utf-8") as f:
             f.write(json.dumps(diccionario))
+            print("Se ha creado el archivo")
     
     
 while(preguntar):
@@ -42,7 +51,7 @@ while(preguntar):
     if int(respuesta) == 1:
         insertar_pelicula()
     elif int(respuesta) == 2:
-        print(si)
+        print("si")
     else:
         print("sales del pograma")
         preguntar = False
