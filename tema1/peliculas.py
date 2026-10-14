@@ -49,7 +49,21 @@ def insertar_pelicula(): #hay que leer archivo antes de añadir una pelicula par
         with open (ruta, "w", encoding="utf-8") as f:
             f.write(json.dumps(diccionario))
             print("Se ha creado el archivo")
-    
+
+def mostrar_pelicula(nombre_pelicula):
+    global diccionario, ruta
+    existe = False
+    if ruta.exists():
+        with open (ruta, "r", encoding="utf-8") as f:
+            diccionario = json.load(f)
+            for c,valor in diccionario.items():
+                if nombre_pelicula in valor.values():
+                    print(valor)
+                    existe = True
+        if not existe:
+            print("La película no existe")
+    else:
+        print("No hay películas guardadas")
     
 while(preguntar):
     respuesta = input("¿Quieres añadir una película(1) o mirarla(2) o salir del prgrama(3)?: ")
@@ -58,7 +72,8 @@ while(preguntar):
     if int(respuesta) == 1:
         insertar_pelicula()
     elif int(respuesta) == 2:
-        print("si")
+        nombre_pelicula = "the heart killers"
+        mostrar_pelicula(nombre_pelicula)
     else:
         print("sales del pograma")
         preguntar = False
