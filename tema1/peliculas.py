@@ -25,26 +25,25 @@ def num_valido(respuesta):
 
 def insertar_pelicula(): #hay que leer archivo antes de añadir una pelicula para ver si existe
     global diccionario, ruta
-    titulo = "the heart killers"
+    titulo = input("Introduce el título de la película: ")
     clave = str(uuid.uuid4())
     if ruta.exists():
         print("la ruta existte")
         with open (ruta, "r", encoding="utf-8") as f:
             diccionario = json.load(f)
             for c,valor in diccionario.items():
-                print(c, valor)
-                if titulo in valor.values():
+                if titulo.lower() in valor.get("titulo").lower():
                     print("El titulo ya existe")
-                    os._exit(1)
+                    return                  
         diccionario[clave] = {}
         diccionario[clave]["titulo"] = titulo
-        diccionario[clave]["puntuacion"] = 4.5
-        diccionario[clave]["cita"] = "Fadel, they are the snitches"
-        print(diccionario)
+        diccionario[clave]["puntuacion"] = input("Introduce la puntuación de la película (0-5): ")
+        while not num_valido(diccionario[clave]["puntuacion"]):
+            diccionario[clave]["puntuacion"] = input("Introduce una puntuación válida (0-5): ")
+        diccionario[clave]["cita"] = input("Introduce la cita de la película: ")
         with open (ruta, "w", encoding="utf-8") as f:
             f.write(json.dumps(diccionario))
-            print("Se ha añadido la película")
-        
+            print("Se ha añadido la película")        
     else: 
         with open (ruta, "w", encoding="utf-8") as f:
             f.write(json.dumps(diccionario))
@@ -57,7 +56,7 @@ def mostrar_pelicula(nombre_pelicula):
         with open (ruta, "r", encoding="utf-8") as f:
             diccionario = json.load(f)
             for c,valor in diccionario.items():
-                if nombre_pelicula in valor.values():
+                if nombre_pelicula.lower() in valor.get("titulo").lower():
                     print(valor)
                     existe = True
         if not existe:
@@ -72,7 +71,7 @@ while(preguntar):
     if int(respuesta) == 1:
         insertar_pelicula()
     elif int(respuesta) == 2:
-        nombre_pelicula = "the heart killers"
+        nombre_pelicula = input("Introduce el nombre de la película que quieres ver: ")
         mostrar_pelicula(nombre_pelicula)
     else:
         print("sales del pograma")
