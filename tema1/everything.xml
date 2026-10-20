@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <everything>
+        <temporada id='1'>
+            <nombre>Everything:RC</nombre>
+            <personaje>Ragdoll</personaje>
+        </temporada>
+        <temporada id='2'>
+            <nombre>Everything:Love</nombre>
+            <personaje>Shuji</personaje>
+        </temporada>
+    </everything>
