@@ -19,3 +19,6 @@ nombres = []
 for p in primeras_personas:
     nombres.append(p.find("nombre").text)
 print(nombres)
+
+persona_Atributo = root.find("persona[@id='2']")
+print(persona_atributo.find("nombre").text)

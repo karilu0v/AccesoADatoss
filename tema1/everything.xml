@@ -3,9 +3,11 @@
         <temporada id='1'>
             <nombre>Everything:RC</nombre>
             <personaje>Ragdoll</personaje>
+            <minutos>21</minutos>
         </temporada>
         <temporada id='2'>
             <nombre>Everything:Love</nombre>
             <personaje>Shuji</personaje>
+            <minutos>320</minutos>
         </temporada>
     </everything>

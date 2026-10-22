@@ -21,6 +21,7 @@ clave = input("Ingresa el juego del que quieres ver su duración:\t")
 with open (ruta, "r", encoding="utf-8") as f:
     try:
         videojuegos = json.loads(f.read())
+        print(type(videojuegos))
         print("El archivo ha sido cargado correctamente")
         
         '''if clave in videojuegos:
