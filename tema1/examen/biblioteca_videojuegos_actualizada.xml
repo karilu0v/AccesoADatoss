@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<biblioteca>
+  <videojuego plataforma="hbo">
+    <titulo>ragdoll</titulo>
+    <anoLanzamiento>435</anoLanzamiento>
+    <genero>e</genero>
+    <precio>432.3</precio>
+    <puntuacion>3</puntuacion>
+  </videojuego>
+<videojuego plataforma="netfix"><titulo>pokemon</titulo><anoLanzamiento>2012</anoLanzamiento><genero>accion</genero><precio>345334</precio><puntuacion>5</puntuacion></videojuego></biblioteca>
