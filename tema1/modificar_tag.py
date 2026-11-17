@@ -25,7 +25,7 @@ if etree.iselement(first_season):
         mins = 18
         
     season_obj = root.find("season@[id='1']")
-    mins_et = eason_obj.find("minutos")
+    mins_et = season_obj.find("minutos")
     if etree.iselement(mins_et):
         mins = season_obj.find("minutos").text
     try:

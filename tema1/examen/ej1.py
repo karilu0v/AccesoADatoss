@@ -65,7 +65,7 @@ def listarGeneros(tree, root):
         
 def videojuegoMejorPuntuado(tree, root):
     videojuegos = root.findall("videojuego")
-    mejor_puntuacion = -1
+    mejor_puntuacion = -1.0
     for v in videojuegos:
         puntuacion = v.find("puntuacion").text
         try:
@@ -94,6 +94,9 @@ def agregarVideojuego(tree, root):
 
     videojuego = etree.SubElement(root, "videojuego")
     videojuego.set("plataforma", plataforma)
+    videojuegos = root.findall("videojuego")
+    for i,v in enumerate(videojuegos):
+        v.set("id", str(i+1))
     titulo_elem = etree.SubElement(videojuego, "titulo")
     titulo_elem.text = titulo
     anoLanzamiento_elem = etree.SubElement(videojuego, "anoLanzamiento")

@@ -1,0 +1,1 @@
+Se utiliza file para que se puede ejecutar sin problema el código y se sepa dónde está ese fichero aúnque este se haya movido a otro lugar.
